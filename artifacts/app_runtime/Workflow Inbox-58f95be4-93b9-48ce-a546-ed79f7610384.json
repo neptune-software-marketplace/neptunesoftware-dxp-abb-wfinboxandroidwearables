@@ -1,0 +1,726 @@
+{
+	"id": "58f95be4-93b9-48ce-a546-ed79f7610384",
+	"createdAt": "2022-02-04T15:46:23.300Z",
+	"updatedAt": "2022-07-25T07:05:53.943Z",
+	"createdBy": "luuk.wosten@neptune-software.com",
+	"changedBy": "kristin.eliassen@neptune-software.com",
+	"objects": [
+		{
+			"fieldNo": "21",
+			"fieldName": "oShell",
+			"fieldParent": 0,
+			"fieldType": "sap.m.Shell",
+			"script": "",
+			"request": [],
+			"response": [],
+			"attributes": [],
+			"data": [
+				{
+					"fieldNo": "092a6112-38e7-4127-c996-8187b3f02888",
+					"fieldName": "oApp",
+					"fieldParent": "21",
+					"fieldType": "sap.m.App",
+					"script": "",
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": [
+						{
+							"fieldNo": "2",
+							"fieldName": "oPageMaster",
+							"fieldParent": "092a6112-38e7-4127-c996-8187b3f02888",
+							"fieldType": "sap.m.Page",
+							"script": "",
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "position",
+									"grouping": "Parent",
+									"value": "addMasterPage",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "8",
+									"fieldName": "oListWorkflow",
+									"fieldParent": "2",
+									"fieldType": "sap.m.List",
+									"script": "",
+									"bindingValue": "Generic Array",
+									"bindingType": "h",
+									"bindingSource": "P9",
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "mode",
+											"grouping": "Properties",
+											"value": "SingleSelectMaster",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "growingThreshold",
+											"grouping": "Properties",
+											"value": "100",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "growing",
+											"grouping": "Properties",
+											"value": "true",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "setInitLoad",
+											"grouping": "Model",
+											"value": "cache",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "setEnableCache",
+											"grouping": "Model",
+											"value": "true",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "setCacheUserBased",
+											"grouping": "Model",
+											"value": "true",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "setCacheType",
+											"grouping": "Model",
+											"value": "IndexedDB",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "itemPress",
+											"grouping": "Events",
+											"value": "Anonymous Function",
+											"script": [
+												"==OBJECT STRING==",
+												"var selectedItem = this.getSelectedItem();",
+												"",
+												"if (selectedItem) {",
+												"",
+												"    var context = selectedItem.getBindingContext();",
+												"    var data = context.getObject();",
+												"",
+												"    // Start WF",
+												"    sap.n.Planet9.function({",
+												"        id: \"WorkflowInbox\",",
+												"        method: \"Get\",",
+												"        data: data,",
+												"        success: function(data) {",
+												"",
+												"            modeloPageDetail.setData(data);",
+												"            modeloListNotes.setData(data.notes || []);",
+												"            modeloListAttachment.setData(data.attachment);",
+												"            modeltabLog.setData(data.log);",
+												"",
+												"            if (!modeloListAttachment.oData.length) oSectionAttachment.setVisible(false);",
+												"            if (!modeloListNotes.oData.length) oSectionNotes.setVisible(false);",
+												"",
+												"            if (data.inboxApp) {",
+												"                AppCache.Load(data.inboxApp, {",
+												"                    parentObject: appContent,",
+												"                    startParams: data",
+												"                });",
+												"            } else {",
+												"                appContent.destroyContent();",
+												"            }",
+												"",
+												"            oApp.toDetail(oPageDetail);",
+												"            oObjectPageLayout._scrollTo(0);",
+												"        },",
+												"        error: function(data) {",
+												"            sap.m.MessageToast.show(data.status);",
+												"        }",
+												"",
+												"    });",
+												"",
+												"}"
+											],
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "0bcc3ff4-4580-4f5d-9616-964327c5d9b5",
+											"fieldName": "oCustomListItem",
+											"fieldParent": "8",
+											"fieldType": "sap.m.CustomListItem",
+											"script": "",
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": [
+												{
+													"fieldNo": "74e7b74a-033f-456f-f107-637c2beee4f1",
+													"fieldName": "oSimpleForm",
+													"fieldParent": "0bcc3ff4-4580-4f5d-9616-964327c5d9b5",
+													"fieldType": "sap.ui.layout.form.SimpleForm",
+													"script": "",
+													"request": [],
+													"response": [],
+													"attributes": [],
+													"data": [
+														{
+															"fieldNo": "77894613-f2da-47f1-d1f7-8fbf86149cdc",
+															"fieldName": "oIconProductCategory",
+															"fieldParent": "74e7b74a-033f-456f-f107-637c2beee4f1",
+															"fieldType": "sap.ui.core.Icon",
+															"script": "",
+															"request": [],
+															"response": [],
+															"attributes": [
+																{
+																	"attribute": "src",
+																	"grouping": "Properties",
+																	"value": "{icon}",
+																	"script": "",
+																	"translation": []
+																},
+																{
+																	"attribute": "size",
+																	"grouping": "Properties",
+																	"value": "50px",
+																	"script": "",
+																	"translation": []
+																}
+															],
+															"data": []
+														},
+														{
+															"fieldNo": "3a4b1ad1-e9a2-46d4-bc45-5c6a45f98f3c",
+															"fieldName": "oTextType",
+															"fieldParent": "74e7b74a-033f-456f-f107-637c2beee4f1",
+															"fieldType": "sap.m.Text",
+															"script": "",
+															"request": [],
+															"response": [],
+															"attributes": [
+																{
+																	"attribute": "text",
+																	"grouping": "Properties",
+																	"value": "{taskTitle}",
+																	"script": "",
+																	"translation": []
+																}
+															],
+															"data": []
+														},
+														{
+															"fieldNo": "dfbcc6f0-c0d1-4e2f-f7ad-27f19cac38ea",
+															"fieldName": "ItemText",
+															"fieldParent": "74e7b74a-033f-456f-f107-637c2beee4f1",
+															"fieldType": "sap.m.Label",
+															"script": "",
+															"request": [],
+															"response": [],
+															"attributes": [
+																{
+																	"attribute": "visible",
+																	"grouping": "Properties",
+																	"value": true,
+																	"script": "",
+																	"translation": []
+																},
+																{
+																	"attribute": "text",
+																	"grouping": "Properties",
+																	"value": "{title}",
+																	"script": "",
+																	"translation": []
+																},
+																{
+																	"attribute": "design",
+																	"grouping": "Properties",
+																	"value": "Bold",
+																	"script": "",
+																	"translation": []
+																}
+															],
+															"data": []
+														},
+														{
+															"fieldNo": "4b3af5a2-4016-4954-cc8d-6af983d4ccc9",
+															"fieldName": "boxProductBuyActions",
+															"fieldParent": "74e7b74a-033f-456f-f107-637c2beee4f1",
+															"fieldType": "sap.m.HBox",
+															"script": "",
+															"request": [],
+															"response": [],
+															"attributes": [
+																{
+																	"attribute": "visible",
+																	"grouping": "Properties",
+																	"value": true,
+																	"script": "",
+																	"translation": []
+																},
+																{
+																	"attribute": "justifyContent",
+																	"grouping": "Properties",
+																	"value": "End",
+																	"script": "",
+																	"translation": []
+																}
+															],
+															"data": [
+																{
+																	"fieldNo": "2101677b-18bc-483f-ca07-9d8f345887e9",
+																	"fieldName": "butApprove",
+																	"fieldParent": "4b3af5a2-4016-4954-cc8d-6af983d4ccc9",
+																	"fieldType": "sap.m.Button",
+																	"script": "",
+																	"request": [],
+																	"response": [],
+																	"attributes": [
+																		{
+																			"attribute": "visible",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "type",
+																			"grouping": "Properties",
+																			"value": "Accept",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "text",
+																			"grouping": "Properties",
+																			"value": "{/approveLabel}",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "styleClass",
+																			"grouping": "Properties",
+																			"value": "neptwearable",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "iconFirst",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "iconDensityAware",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "icon",
+																			"grouping": "Properties",
+																			"value": "sap-icon://accept",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "enabled",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "press",
+																			"grouping": "Events",
+																			"value": "Anonymous Function",
+																			"script": [
+																				"==OBJECT STRING==",
+																				"var context = oEvent.oSource.getBindingContext();",
+																				"var data = context.getObject();",
+																				"",
+																				"var rec = {};",
+																				"rec.id = data.id;",
+																				"",
+																				"// Start WF",
+																				"oApp.setBusy(true);",
+																				"sap.n.Planet9.function({",
+																				"    id: \"WorkflowInbox\",",
+																				"    method: \"Approve\",",
+																				"    data: rec,",
+																				"    success: function(data) {",
+																				"        handleUpdate(\"Approve\");",
+																				"        oApp.setBusy(false);",
+																				"        update();",
+																				"    },",
+																				"    error: function(data) {",
+																				"        oApp.setBusy(false);",
+																				"update();",
+																				"    }",
+																				"});",
+																				""
+																			],
+																			"translation": []
+																		}
+																	],
+																	"data": []
+																},
+																{
+																	"fieldNo": "913d869b-0dcb-4296-a296-e9979d6bdf55",
+																	"fieldName": "toolDetailSpacer",
+																	"fieldParent": "4b3af5a2-4016-4954-cc8d-6af983d4ccc9",
+																	"fieldType": "sap.m.ToolbarSpacer",
+																	"script": "",
+																	"request": [],
+																	"response": [],
+																	"attributes": [
+																		{
+																			"attribute": "width",
+																			"grouping": "Properties",
+																			"value": "20px",
+																			"script": "",
+																			"translation": []
+																		}
+																	],
+																	"data": []
+																},
+																{
+																	"fieldNo": "1010c176-56ba-4601-a621-1a048706768b",
+																	"fieldName": "butReject",
+																	"fieldParent": "4b3af5a2-4016-4954-cc8d-6af983d4ccc9",
+																	"fieldType": "sap.m.Button",
+																	"script": "",
+																	"request": [],
+																	"response": [],
+																	"attributes": [
+																		{
+																			"attribute": "visible",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "type",
+																			"grouping": "Properties",
+																			"value": "Reject",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "text",
+																			"grouping": "Properties",
+																			"value": "{/rejectLabel}",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "styleClass",
+																			"grouping": "Properties",
+																			"value": "neptwearable",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "iconFirst",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "iconDensityAware",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "icon",
+																			"grouping": "Properties",
+																			"value": "sap-icon://decline",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "enabled",
+																			"grouping": "Properties",
+																			"value": true,
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "press",
+																			"grouping": "Events",
+																			"value": "Anonymous Function",
+																			"script": [
+																				"==OBJECT STRING==",
+																				"var context = oEvent.oSource.getBindingContext();",
+																				"var data = context.getObject();",
+																				"",
+																				"var rec = {};",
+																				"rec.id = data.id;",
+																				"",
+																				"// Start WF",
+																				"oApp.setBusy(true);",
+																				"sap.n.Planet9.function({",
+																				"    id: \"WorkflowInbox\",",
+																				"    method: \"Reject\",",
+																				"    data: rec,",
+																				"    success: function(data) {",
+																				"        handleUpdate(\"Reject\");",
+																				"        oApp.setBusy(false);",
+																				"        update();",
+																				"    },",
+																				"    error: function(data) {",
+																				"        oApp.setBusy(false);",
+																				"update();",
+																				"    }",
+																				"});",
+																				""
+																			],
+																			"translation": []
+																		}
+																	],
+																	"data": []
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"fieldNo": "10ce9694-58b6-4b81-8e84-2adeea96d386",
+							"fieldName": "oPageHidden",
+							"fieldParent": "092a6112-38e7-4127-c996-8187b3f02888",
+							"fieldType": "sap.m.Page",
+							"script": "",
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": [
+								{
+									"fieldNo": "3994c5c6-7e2d-4935-f819-af7938868f06",
+									"fieldName": "CSS",
+									"fieldParent": "10ce9694-58b6-4b81-8e84-2adeea96d386",
+									"fieldType": "sap.ui.core.HTML",
+									"script": "",
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": [
+										{
+											"fieldNo": "5de15d42-8ee8-45af-fd88-f35ff8d55b3c",
+											"fieldName": "CSS",
+											"fieldParent": "3994c5c6-7e2d-4935-f819-af7938868f06",
+											"fieldType": "neptune.Html",
+											"script": [
+												"==OBJECT STRING==",
+												"<style type=\"text/css\" media=\"all\">",
+												"    .neptwearable .sapMBtnInner{",
+												"  border-radius:30px;",
+												"}",
+												"</style>"
+											],
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": []
+										}
+									]
+								},
+								{
+									"fieldNo": "723c7622-32d0-44bf-fe13-d76372e4bd8b",
+									"fieldName": "onBeforeBack",
+									"fieldParent": "10ce9694-58b6-4b81-8e84-2adeea96d386",
+									"fieldType": "neptune.Script",
+									"script": "//test",
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								},
+								{
+									"fieldNo": "7f102965-4709-4cba-b4ff-87263c5aff9f",
+									"fieldName": "Init",
+									"fieldParent": "10ce9694-58b6-4b81-8e84-2adeea96d386",
+									"fieldType": "neptune.Script",
+									"script": [
+										"==OBJECT STRING==",
+										"var timeStart;",
+										"",
+										"jQuery.sap.require(\"sap.ui.core.format.FileSizeFormat\");",
+										"",
+										"var oFileSizeFormat = sap.ui.core.format.FileSizeFormat.getInstance({",
+										"    binaryFilesize: false,",
+										"    decimals: 2",
+										"});",
+										"//make a change",
+										"// Custom Init - Happens only once",
+										"sap.ui.getCore().attachInit(function(data) {",
+										"",
+										"",
+										"    setTimeout(function() {",
+										"",
+										"        oPageMaster.setTitle(\"Inbox\");",
+										"        getCacheoListWorkflow();",
+										"",
+										"        // Sort Inbox",
+										"        var oSorter = new sap.ui.model.Sorter(\"overDueDate\", true, false);",
+										"        var binding = oListWorkflow.getBinding(\"items\");",
+										"        binding.sort(oSorter);",
+										"// Start WF",
+										"update();",
+										"    }, 200);",
+										"",
+										"});",
+										"",
+										"function isCordova() {",
+										"    if (window.hasOwnProperty(\"cordova\") || typeof(cordova) == \"object\") {",
+										"        return true;",
+										"    } else {",
+										"        return false;",
+										"    }",
+										"}",
+										"",
+										"// OnError",
+										"window.onerror = function(msg, url, line) {",
+										"    alert(JSON.stringify(msg));",
+										"};"
+									],
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								},
+								{
+									"fieldNo": "121",
+									"fieldName": "handleUpdate",
+									"fieldParent": "10ce9694-58b6-4b81-8e84-2adeea96d386",
+									"fieldType": "neptune.Script",
+									"script": [
+										"==OBJECT STRING==",
+										"function handleUpdate(action) {",
+										"",
+										"    if (sap.ui.Device.system.phone) {",
+										"        oApp.back();",
+										"    } else {",
+										"       ",
+										"    }",
+										"",
+										"    oListWorkflow.removeSelections();",
+										"",
+										"    switch (action) {",
+										"   ",
+										"",
+										"        case \"Reject\":",
+										"            sap.m.MessageToast.show(\"Workflow is Rejected\");",
+										"            break;",
+										"",
+										"        case \"Approve\":",
+										"            sap.m.MessageToast.show(\"Workflow is Approved\");",
+										"            break;",
+										" ",
+										"    }",
+										"",
+										"}",
+										"function update() {",
+										"   sap.n.Planet9.function({",
+										"    id: \"WorkflowInbox\",",
+										"    method: \"List\",",
+										"    success: function(data) {",
+										"",
+										"        if (!modeloListWorkflow.oData.length) {",
+										"           ",
+										"        }",
+										"",
+										"        modeloListWorkflow.setData(data);",
+										"        debugger;",
+										"        setCacheoListWorkflow();",
+										"",
+										"    },",
+										"    error: function(data) {",
+										"",
+										"    }",
+										"",
+										"});",
+										"}"
+									],
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"fieldNo": 99999,
+			"data": []
+		},
+		{
+			"fieldNo": 99998,
+			"data": []
+		}
+	],
+	"ver": "22.7.25.95",
+	"application": "neptbb_inbox_wearable",
+	"title": "Workflow Inbox",
+	"description": "Workflow Inbox",
+	"enableFileStorage": false,
+	"enableManifest": false,
+	"enableStylesheet": true,
+	"enableObfuscate": false,
+	"onlyRunLaunchpad": true,
+	"disabled": false,
+	"loadLaunchpadCode": null,
+	"loadApplicationCode": null,
+	"appType": "",
+	"ui5_m": true,
+	"ui5_f": false,
+	"ui5_table": false,
+	"ui5_tnt": false,
+	"ui5_uxap": false,
+	"ui5_chart": false,
+	"ui5_theme": "sap_belize",
+	"ui5_version": "",
+	"ui5_language": null,
+	"cus_theme": "",
+	"css": [
+		"==OBJECT STRING==",
+		".neptwearable .sapMBtnInner{",
+		"  border-radius:30px;",
+		"}"
+	],
+	"header": "",
+	"manifest": "",
+	"globalScript": "",
+	"deleted": false,
+	"libHighchart": false,
+	"libHighmap": false,
+	"publicAccess": false,
+	"ui5_bootstrap": false,
+	"apis": []
+}

@@ -1,0 +1,47 @@
+{
+	"id": "147F9B2E-E80B-ED11-B47A-000D3AB2359F",
+	"createdAt": "2022-07-25T07:05:37.083Z",
+	"createdBy": "kristin.eliassen@neptune-software.com",
+	"git": {
+		"targetServers": [],
+		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-wfinboxandroidwearables",
+		"testServers": []
+	},
+	"name": "neptunesoftware-dxp-abb-wfinboxandroidwearables",
+	"description": null,
+	"ver": "22.7.25.731",
+	"enableCICD": true,
+	"apps": [
+		{
+			"id": "58F95BE4-93B9-48CE-A546-ED79F7610384",
+			"ver": "22.7.25.95",
+			"application": "neptbb_inbox_wearable",
+			"title": "Workflow Inbox",
+			"description": "Workflow Inbox"
+		}
+	],
+	"api": [],
+	"odataMock": [],
+	"odataSource": [],
+	"dictionary": [],
+	"jsclass": [],
+	"jsscript_group": [],
+	"theme": [],
+	"pdf": [],
+	"rulesengine": [],
+	"reports": [],
+	"api_authentication": [],
+	"api_group": [],
+	"tile": [],
+	"category": [],
+	"launchpad": [],
+	"certificates": [],
+	"role": [],
+	"systems": [],
+	"doc": [],
+	"wf_notifications": [],
+	"wf_definition": [],
+	"department": [],
+	"script_scheduler": [],
+	"connector": []
+}
